@@ -9,7 +9,7 @@ void setup() {
   uint16_t ID = tft.readID();
   tft.begin(ID);
   tft.setRotation(1);
-  calibrateTouch();
+  // calibrateTouch();
   drawModeSelectLife();
 }
 
