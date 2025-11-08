@@ -1,64 +1,25 @@
-# 💖 Vivômetro
+# 💖 Vivômetro {{{ Se tá vivo, tem jogo! }}}
 
-**Vivômetro** é um contador de vida digital para jogos de cartas como *Magic: The Gathering*, desenvolvido para telas *touchscreen* com Arduino e display TFT.  
-O projeto evolui em versões incrementais, sempre com foco em simplicidade, jogabilidade e uma interface intuitiva.
-
----
-
-## ⚙️ Estrutura do projeto
-
-```cpp
-// counter.ino
-#include "display.h"
-#include "touch.h"
-#include "modes.h"
-#include "draw_screens.h"
-#include "logic.h"
-
-void setup() {
-  Serial.begin(9600);
-  uint16_t ID = tft.readID();
-  tft.begin(ID);
-  tft.setRotation(1);
-  // calibrateTouch();
-  drawModeSelectLife();
-}
-
-void loop() {
-  processTouch();
-}
-```
-
----
-
-## 📁 Cada módulo é responsável por uma parte específica da aplicação
-
-| Arquivo | Função |
-|----------|--------|
-| **display.h** | Inicializa e configura o display TFT |
-| **touch.h** | Lida com a leitura e calibração do toque |
-| **modes.h** | Gerencia os diferentes modos de jogo (1, 2, 4 jogadores, etc.) |
-| **draw_screens.h** | Desenha as telas e elementos gráficos |
-| **logic.h** | Contém a lógica principal de interação e atualização de vida |
+**Vivômetro** é um contador de vida digital para jogos como *Magic: The Gathering*, desenvolvido para telas *touchscreen* com Arduino e display TFT. O projeto evolui em versões incrementais, sempre com foco em simplicidade, jogabilidade e uma interface intuitiva.
 
 ---
 
 ## 🚀 Funcionalidades por versão
 
-### 🩸 **MVP (Versão Inicial)**
+### 🩸 **MVP (Versão Inicial)** (30/10/2025)
 - Contador de energia individual (1 jogador)
 - Interface simples com toque direto na tela
 
-### 👥 **v1**
+### 👥 **v1** (31/10/2025)
 - Suporte para **1, 2 ou 4 jogadores**
 
-### ⚖️ **v2**
+### ⚖️ **v2** (01/11/2025)
 - Opção de iniciar com **20, 30 ou 40 pontos de vida**
 
-### ⚔️ **v3**
+### ⚔️ **v3** (02/11/2025)
 - Inclusão do **dano de comandante**
 
-### 🧹 **v4**
+### 🧹 **v4** (08/11/2025)
 - **Remoção do calibrador** de toque manual (já calibrado)
 
 ---
@@ -75,9 +36,9 @@ void loop() {
 
 ## 🔧 Requisitos de hardware
 
-- **Arduino UNO**, **MEGA** ou similar  
-- **Display TFT** compatível com a biblioteca `MCUFRIEND_kbv`  
-- **Tela touchscreen** resistiva  
+- **Arduino UNO**, **MEGA** ou similar (Placa Arduino Uno R3 Atmega328p SMD)
+- **Display TFT / Tela touchscreen** compatível com a biblioteca `MCUFRIEND_kbv` (Tela / Display LCD Tft 2.4' Touchscreen R3)
+- **Alimentação de energia** (cabo adaptador para arduino bateria 9v)
 
 ### 📚 Bibliotecas necessárias
 
@@ -89,18 +50,19 @@ void loop() {
 
 ## 🕹️ Como usar
 
-1. Faça o upload do código para o seu Arduino.  
-2. Conecte o display TFT.  
-3. Toque na tela para escolher o modo (**1**, **2** ou **4 jogadores**).  
-4. Toque nos números para adicionar ou remover pontos de vida.  
-5. Divirta-se jogando! 🎲
+1. Faça o upload do código para o seu Arduino.
+2. Conecte o display visual TFT.
+3. Toque na tela para escolher quantidade de vida (**20**, **30** ou **40 de vida**).
+4. Escolher o modo (**1**, **2** ou **4 jogadores**).
+5. Toque no **"-"** e no **"+"** para remover ou adicionar pontos de vida.  
+6. **Divirta-se**!
 
 ---
 
 ## 💡 Sobre o nome
 
 > **Vivômetro**  
-> *Se tá vivo, tá valendo!*
+> *Se tá vivo, tem jogo!*
 
 Um nome simpático, inspirado em *“life counter”*, mas com um toque de humor e brasilidade.
 
@@ -114,4 +76,4 @@ Sinta-se à vontade para usar, modificar e contribuir.
 ---
 
 🧑‍💻 **Autoria:** [Iara Nascimento](https://github.com/IaraNascimento)  
-💬 *Feito com amor, lógica e um toque de magia.*
+💬 *Feito com carinho, lógica e um toque de magia.*
