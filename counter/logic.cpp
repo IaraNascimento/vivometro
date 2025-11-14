@@ -19,6 +19,10 @@ void handleModeSelectPlayers(int x, int y);
 void handleModeOne(int x, int y);
 void handleModeTwo(int x, int y);
 void handleModeFour(int x, int y);
+void handleCMDFour(int x, int y);
+void handlePoisonTwo(int x, int y);
+void handlePoisonFour(int x, int y);
+void handleMenu(int x, int y, int backTarget);
 
 void processTouch() {
   TSPoint p = ts.getPoint();
@@ -30,11 +34,16 @@ void processTouch() {
     int y = map(p.x, TS_MINX, TS_MAXX, tft.height(), 0) + offsetY;
 
     switch (mode) {
+      // case 0: calibrar
       case 1: handleModeSelectLife(x, y); break;
       case 2: handleModeSelectPlayers(x, y); break;
-      case 3: handleModeOne(x, y); break;
-      case 4: handleModeTwo(x, y); break;
-      case 5: handleModeFour(x, y); break;
+      case 11: handleModeOne(x, y); break;
+      case 12: handleModeTwo(x, y); break;
+      case 14: handleModeFour(x, y); break;
+      case 24: handleCMDFour(x, y); break;
+      case 32: handlePoisonTwo(x, y); break;
+      // case 34: handlePoisonFour(x, y); break;
+      case 99: handleMenu(x, y, backTarget); break;
     }
   }
 }

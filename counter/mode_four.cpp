@@ -8,7 +8,7 @@ void handleModeFour(int x, int y) {
   int h = tft.height() / 2;
 
   // --- CLICAR NO CENTRO: volta ao modo anterior ou sai do modo comandante ---
-  if (abs(x - w) < 16 && abs(y - h) < 16) {
+  if (abs(x - w) < 20 && abs(y - h) < 20) {
     if (activeCommander == -1) {
       mode = 2;
       drawModeSelectPlayers();
@@ -31,7 +31,7 @@ void handleModeFour(int x, int y) {
   // --- Clique no botão "comandante" ---
   if ((activeCommander == -1) && (y > h+h/2+25 || y < h-h/2-25)) {
     activeCommander = (activeCommander == quadrant) ? -1 : quadrant;
-    drawFour();
+    drawCMDFour();
     return;
   }
 
@@ -57,66 +57,6 @@ void handleModeFour(int x, int y) {
     return;
   }
 
-  // --- Modo comandante: alterar dano de comandante ---
-  if (quadrant != activeCommander) {
-    int receiver = activeCommander;
-    int attacker = quadrant;
-
-    if (x > w && y > h) {
-      if (x < (w + w / 2)) {
-        if (commanderDamage[receiver][attacker] > 0) {
-          commanderDamage[receiver][attacker]--;
-          life[4][receiver]++;
-        }
-      }
-      else {
-        commanderDamage[receiver][attacker]++;
-        life[4][receiver]--;
-      }
-    }
-
-    if (x > w && y < h) {
-      if (x > (w + w / 2)) {
-        if (commanderDamage[receiver][attacker] > 0) {
-          commanderDamage[receiver][attacker]--;
-          life[4][receiver]++;
-        }
-      }
-      else {
-        commanderDamage[receiver][attacker]++;
-        life[4][receiver]--;
-      }
-    }
-
-    if (x < w && y < h) {
-      if (x > w / 2) {
-        if (commanderDamage[receiver][attacker] > 0) {
-          commanderDamage[receiver][attacker]--;
-          life[4][receiver]++;
-        }
-      }
-      else {
-        commanderDamage[receiver][attacker]++;
-        life[4][receiver]--;
-      }
-    }
-
-    if (x < w && y > h) {
-      if (x < w / 2) {
-        if (commanderDamage[receiver][attacker] > 0) {
-          commanderDamage[receiver][attacker]--;
-          life[4][receiver]++;
-        }
-      }
-      else {
-        commanderDamage[receiver][attacker]++;
-        life[4][receiver]--;
-      }
-    }
-
-    drawFour();
-    return;
-  }
-
-  return;
+  // --- Modo comandante: delega para handleCMDFour ---
+  handleCMDFour(x, y);
 }

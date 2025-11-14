@@ -9,8 +9,8 @@ void handleModeTwo(int x, int y) {
   int idx = (y < h) ? 0 : 1;
 
   if (abs(x - w) < 16 && abs(y - h) < 16) {
-    mode = 2;
-    drawModeSelectPlayers();
+    mode = 99;
+    drawMenu();
     return;
   }
 
